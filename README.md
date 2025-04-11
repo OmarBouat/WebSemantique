@@ -57,10 +57,43 @@ This project defines an OWL ontology for modeling a tourism ecosystem. It captur
 
 ## 🧪 SPARQL Query Examples
 
-### 1. Retrieve all events with their names and dates
+### 1. Tourists and the destinations they visit
 ```sparql
-SELECT ?event ?name ?date WHERE {
-  ?event a ex:Event ;
-         ex:EventName ?name ;
-         ex:date ?date .
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX ex: <http://www.example.org/tourism#>
+
+SELECT ?tourist ?destination WHERE {
+  ?tourist a ex:Tourist ;
+           ex:visits ?destination .
 }
+```
+### 2. Tourists and their transport usage
+```sparql
+PREFIX ex: <http://www.example.org/tourism#>
+
+SELECT ?tourist ?transport
+WHERE {
+  ?tourist a ex:Tourist .
+  ?tourist ex:usesTransport ?transport .
+}
+```
+### 3. Destinations and their accommodations
+```sparql
+PREFIX ex: <http://www.example.org/tourism#>
+
+SELECT ?destination ?accommodation
+WHERE {
+  ?destination a ex:Destination .
+  ?destination ex:hasAccommodation ?accommodation .
+}
+```
+### 4. Destinations and their activities
+```sparql
+PREFIX ex: <http://www.example.org/tourism#>
+
+SELECT ?destination ?activity
+WHERE {
+  ?destination a ex:Destination .
+  ?destination ex:offersActivity ?activity .
+}
+```
