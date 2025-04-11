@@ -34,8 +34,8 @@ This project defines an OWL ontology for modeling a tourism ecosystem. It captur
 ### 🔗 Object Properties
 - `visits` → `Tourist → Destination`
 - `usesTransport` → `Tourist → Transport`
-- `hasAccommodation` → `Tourist → Accommodation`
-- `offersActivity` → `Tourist → Activity`
+- `hasAccommodation` → `Destination → Accommodation`
+- `offersActivity` → `Destination → Activity`
 - `attendsEvent` → `Tourist → Event`
 - `guides` → `Guide → Tourist`
 
