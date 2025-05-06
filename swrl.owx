@@ -1,0 +1,225 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.example.org/tourism#"
+     xml:base="http://www.example.org/tourism"
+     xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+     xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+
+    <!-- ==================== RÈGLE 1 : ACTIVITÉ AUTOMATIQUE ==================== -->
+    <swrl:Rule rdf:ID="AutoActivityRule">
+        <rdfs:comment>Si un Touriste visite une Destination qui propose une Activité, 
+        alors il participe automatiquement à cette Activité.</rdfs:comment>
+        <swrl:body>
+            <swrl:AtomList>
+                <!-- Prémisses -->
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="#Tourist"/>
+                        <swrl:argument1 rdf:resource="#t"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:first>
+                            <swrl:IndividualPropertyAtom>
+                                <swrl:propertyPredicate rdf:resource="#visits"/>
+                                <swrl:argument1 rdf:resource="#t"/>
+                                <swrl:argument2 rdf:resource="#d"/>
+                            </swrl:IndividualPropertyAtom>
+                        </rdf:first>
+                        <rdf:rest>
+                            <swrl:AtomList>
+                                <rdf:first>
+                                    <swrl:ClassAtom>
+                                        <swrl:classPredicate rdf:resource="#Destination"/>
+                                        <swrl:argument1 rdf:resource="#d"/>
+                                    </swrl:ClassAtom>
+                                </rdf:first>
+                                <rdf:rest>
+                                    <swrl:AtomList>
+                                        <rdf:first>
+                                            <swrl:IndividualPropertyAtom>
+                                                <swrl:propertyPredicate rdf:resource="#offersActivity"/>
+                                                <swrl:argument1 rdf:resource="#d"/>
+                                                <swrl:argument2 rdf:resource="#a"/>
+                                            </swrl:IndividualPropertyAtom>
+                                        </rdf:first>
+                                    </swrl:AtomList>
+                                </rdf:rest>
+                            </swrl:AtomList>
+                        </rdf:rest>
+                    </swrl:AtomList>
+                </rdf:rest>
+            </swrl:AtomList>
+        </swrl:body>
+        <swrl:head>
+            <!-- Conclusion -->
+            <swrl:AtomList>
+                <rdf:first>
+                    <swrl:IndividualPropertyAtom>
+                        <swrl:propertyPredicate rdf:resource="#attends"/>
+                        <swrl:argument1 rdf:resource="#t"/>
+                        <swrl:argument2 rdf:resource="#a"/>
+                    </swrl:IndividualPropertyAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:head>
+    </swrl:Rule>
+
+    <!-- ==================== RÈGLE 2 : LIEN CULTURE-MONUMENT ==================== -->
+    <swrl:Rule rdf:ID="CultureMonumentRule">
+        <rdfs:comment>Si un Touriste participe à une Activité Culturelle, 
+        alors il visite un Monument.</rdfs:comment>
+        <swrl:body>
+            <swrl:AtomList>
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="#CulturalActivity"/>
+                        <swrl:argument1 rdf:resource="#a"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:first>
+                            <swrl:IndividualPropertyAtom>
+                                <swrl:propertyPredicate rdf:resource="#attends"/>
+                                <swrl:argument1 rdf:resource="#t"/>
+                                <swrl:argument2 rdf:resource="#a"/>
+                            </swrl:IndividualPropertyAtom>
+                        </rdf:first>
+                    </swrl:AtomList>
+                </rdf:rest>
+            </swrl:AtomList>
+        </swrl:body>
+        <swrl:head>
+            <swrl:AtomList>
+                <rdf:first>
+                    <swrl:IndividualPropertyAtom>
+                        <swrl:propertyPredicate rdf:resource="#visits"/>
+                        <swrl:argument1 rdf:resource="#t"/>
+                        <swrl:argument2 rdf:resource="#m"/>
+                    </swrl:IndividualPropertyAtom>
+                </rdf:first>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:first>
+                            <swrl:ClassAtom>
+                                <swrl:classPredicate rdf:resource="#Monument"/>
+                                <swrl:argument1 rdf:resource="#m"/>
+                            </swrl:ClassAtom>
+                        </rdf:first>
+                    </swrl:AtomList>
+                </rdf:rest>
+            </swrl:AtomList>
+        </swrl:head>
+    </swrl:Rule>
+
+    <!-- ==================== RÈGLE 3 : HÉBERGEMENT COÛTEUX ==================== -->
+    <swrl:Rule rdf:ID="ExpensiveAccommodationRule">
+        <rdfs:comment>Si un Hébergement a un prix/nuit supérieur à 100, 
+        alors c'est un Hôtel.</rdfs:comment>
+        <swrl:body>
+            <swrl:AtomList>
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="#Accommodation"/>
+                        <swrl:argument1 rdf:resource="#a"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:first>
+                            <swrl:DatavaluedPropertyAtom>
+                                <swrl:propertyPredicate rdf:resource="#pricePerNight"/>
+                                <swrl:argument1 rdf:resource="#a"/>
+                                <swrl:argument2 rdf:resource="#p"/>
+                            </swrl:DatavaluedPropertyAtom>
+                        </rdf:first>
+                        <rdf:rest>
+                            <swrl:AtomList>
+                                <rdf:first>
+                                    <swrl:BuiltinAtom swrl:builtin="http://www.w3.org/2003/11/swrlb#greaterThan">
+                                        <swrl:arguments>
+                                            <rdf:first rdf:resource="#p"/>
+                                            <rdf:rest>
+                                                <rdf:List>
+                                                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">100</rdf:first>
+                                                </rdf:List>
+                                            </rdf:rest>
+                                        </swrl:arguments>
+                                    </swrl:BuiltinAtom>
+                                </rdf:first>
+                            </swrl:AtomList>
+                        </rdf:rest>
+                    </swrl:AtomList>
+                </rdf:rest>
+            </swrl:AtomList>
+        </swrl:body>
+        <swrl:head>
+            <swrl:AtomList>
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="#Hotel"/>
+                        <swrl:argument1 rdf:resource="#a"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:head>
+    </swrl:Rule>
+
+    <!-- ==================== RÈGLE 4 : ÉVÉNEMENT NATIONAL ==================== -->
+    <swrl:Rule rdf:ID="NationalEventRule">
+        <rdfs:comment>Si un Événement contient "Nationale" dans son nom, 
+        alors c'est une Activité Culturelle.</rdfs:comment>
+        <swrl:body>
+            <swrl:AtomList>
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="#Event"/>
+                        <swrl:argument1 rdf:resource="#e"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+                <rdf:rest>
+                    <swrl:AtomList>
+                        <rdf:first>
+                            <swrl:DatavaluedPropertyAtom>
+                                <swrl:propertyPredicate rdf:resource="#EventName"/>
+                                <swrl:argument1 rdf:resource="#e"/>
+                                <swrl:argument2 rdf:resource="#name"/>
+                            </swrl:DatavaluedPropertyAtom>
+                        </rdf:first>
+                        <rdf:rest>
+                            <swrl:AtomList>
+                                <rdf:first>
+                                    <swrl:BuiltinAtom swrl:builtin="http://www.w3.org/2003/11/swrlb#contains">
+                                        <swrl:arguments>
+                                            <rdf:first rdf:resource="#name"/>
+                                            <rdf:rest>
+                                                <rdf:List>
+                                                    <rdf:first>Nationale</rdf:first>
+                                                </rdf:List>
+                                            </rdf:rest>
+                                        </swrl:arguments>
+                                    </swrl:BuiltinAtom>
+                                </rdf:first>
+                            </swrl:AtomList>
+                        </rdf:rest>
+                    </swrl:AtomList>
+                </rdf:rest>
+            </swrl:AtomList>
+        </swrl:body>
+        <swrl:head>
+            <swrl:AtomList>
+                <rdf:first>
+                    <swrl:ClassAtom>
+                        <swrl:classPredicate rdf:resource="#CulturalActivity"/>
+                        <swrl:argument1 rdf:resource="#e"/>
+                    </swrl:ClassAtom>
+                </rdf:first>
+            </swrl:AtomList>
+        </swrl:head>
+    </swrl:Rule>
+
+</rdf:RDF>

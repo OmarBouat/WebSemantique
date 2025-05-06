@@ -1,0 +1,571 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.example.org/tourism#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.example.org/tourism#">
+    <Prefix name="" IRI="http://www.example.org/tourism#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="foaf" IRI="http://xmlns.com/foaf/0.1/"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="tourism" IRI="http://www.example.org/tourism#"/>
+    <Declaration>
+        <Class IRI="Accommodation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Activity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Bus"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Camping"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="City"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="CulturalActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Destination"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Event"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Guide"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Hostel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Hotel"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Monument"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="NatureActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Park"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Person"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Place"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Plane"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="SportActivity"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Tourist"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Train"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Transport"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="attends"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="attendsEvent"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="guides"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="hasAccommodation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="offersActivity"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="usesTransport"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="visits"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="EventName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="activityName"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="age"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="date"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="location"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="pricePerNight"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty abbreviatedIRI="foaf:name"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Ahmed"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Ali"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="BasitilleDay"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="HotelIbis"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Louvre"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="MuseumVisit"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Paris"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Sana"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Sarah"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="TGV"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Tunis"/>
+    </Declaration>
+    <Declaration>
+        <Datatype abbreviatedIRI="xsd:date"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="Bus"/>
+        <Class IRI="Transport"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Camping"/>
+        <Class IRI="Accommodation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="City"/>
+        <Class IRI="Destination"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="CulturalActivity"/>
+        <Class IRI="Activity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Destination"/>
+        <Class IRI="Place"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Destination"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="offersActivity"/>
+            <Class IRI="Activity"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Destination"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="location"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Event"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="date"/>
+            <Datatype abbreviatedIRI="xsd:date"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Guide"/>
+        <Class IRI="Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Hostel"/>
+        <Class IRI="Accommodation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Hotel"/>
+        <Class IRI="Accommodation"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Monument"/>
+        <Class IRI="Destination"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="NatureActivity"/>
+        <Class IRI="Activity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Park"/>
+        <Class IRI="Destination"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Plane"/>
+        <Class IRI="Transport"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="SportActivity"/>
+        <Class IRI="Activity"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Tourist"/>
+        <Class IRI="Person"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Tourist"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="attends"/>
+            <Class IRI="Event"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Tourist"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="visits"/>
+            <Class IRI="Destination"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Tourist"/>
+        <DataExactCardinality cardinality="1">
+            <DataProperty IRI="age"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataExactCardinality>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="Train"/>
+        <Class IRI="Transport"/>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="Destination"/>
+        <Class IRI="Tourist"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="Tourist"/>
+        <NamedIndividual IRI="Ahmed"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Tourist"/>
+        <NamedIndividual IRI="Ali"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Event"/>
+        <NamedIndividual IRI="BasitilleDay"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Hotel"/>
+        <NamedIndividual IRI="HotelIbis"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Monument"/>
+        <NamedIndividual IRI="Louvre"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="CulturalActivity"/>
+        <NamedIndividual IRI="MuseumVisit"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="City"/>
+        <NamedIndividual IRI="Paris"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Tourist"/>
+        <NamedIndividual IRI="Sana"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Guide"/>
+        <NamedIndividual IRI="Sarah"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Train"/>
+        <NamedIndividual IRI="TGV"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Destination"/>
+        <NamedIndividual IRI="Tunis"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="visits"/>
+        <NamedIndividual IRI="Ahmed"/>
+        <NamedIndividual IRI="Paris"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="attends"/>
+        <NamedIndividual IRI="Ali"/>
+        <NamedIndividual IRI="MuseumVisit"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="visits"/>
+        <NamedIndividual IRI="Ali"/>
+        <NamedIndividual IRI="Paris"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="offersActivity"/>
+        <NamedIndividual IRI="Paris"/>
+        <NamedIndividual IRI="MuseumVisit"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="usesTransport"/>
+        <NamedIndividual IRI="Sana"/>
+        <NamedIndividual IRI="TGV"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="visits"/>
+        <NamedIndividual IRI="Sana"/>
+        <NamedIndividual IRI="Louvre"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="visits"/>
+        <NamedIndividual IRI="Sana"/>
+        <NamedIndividual IRI="Tunis"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="guides"/>
+        <NamedIndividual IRI="Sarah"/>
+        <NamedIndividual IRI="Ali"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="hasAccommodation"/>
+        <NamedIndividual IRI="Tunis"/>
+        <NamedIndividual IRI="HotelIbis"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="age"/>
+        <NamedIndividual IRI="Ahmed"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">24</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="foaf:name"/>
+        <NamedIndividual IRI="Ahmed"/>
+        <Literal>Ahmed</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="age"/>
+        <NamedIndividual IRI="Ali"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#integer">30</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="foaf:name"/>
+        <NamedIndividual IRI="Ali"/>
+        <Literal>Ali</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="EventName"/>
+        <NamedIndividual IRI="BasitilleDay"/>
+        <Literal>Fête Nationale</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="date"/>
+        <NamedIndividual IRI="BasitilleDay"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">2024-04-12T13:20:00-05:00</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="location"/>
+        <NamedIndividual IRI="HotelIbis"/>
+        <Literal>Tunisia</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="pricePerNight"/>
+        <NamedIndividual IRI="HotelIbis"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">150</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="location"/>
+        <NamedIndividual IRI="Louvre"/>
+        <Literal>Paris</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="activityName"/>
+        <NamedIndividual IRI="MuseumVisit"/>
+        <Literal>Visit Louvre Museum</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="location"/>
+        <NamedIndividual IRI="Paris"/>
+        <Literal>France</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="age"/>
+        <NamedIndividual IRI="Sana"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#decimal">20</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="foaf:name"/>
+        <NamedIndividual IRI="Sana"/>
+        <Literal>Sana</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty abbreviatedIRI="foaf:name"/>
+        <NamedIndividual IRI="Sarah"/>
+        <Literal>Sarah</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="location"/>
+        <NamedIndividual IRI="Tunis"/>
+        <Literal>Tunisia</Literal>
+    </DataPropertyAssertion>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="attends"/>
+        <Class IRI="Tourist"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="attendsEvent"/>
+        <Class IRI="Tourist"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="guides"/>
+        <Class IRI="Guide"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="hasAccommodation"/>
+        <Class IRI="Destination"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="offersActivity"/>
+        <Class IRI="Destination"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="usesTransport"/>
+        <Class IRI="Tourist"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="visits"/>
+        <Class IRI="Tourist"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="attends"/>
+        <Class IRI="Activity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="attendsEvent"/>
+        <Class IRI="Event"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="guides"/>
+        <Class IRI="Tourist"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="hasAccommodation"/>
+        <Class IRI="Accommodation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="offersActivity"/>
+        <Class IRI="Activity"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="usesTransport"/>
+        <Class IRI="Transport"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="visits"/>
+        <Class IRI="Destination"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="EventName"/>
+        <Class IRI="Event"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="EventName"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="EventName"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="activityName"/>
+        <Class IRI="Activity"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="activityName"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="activityName"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="age"/>
+        <Class IRI="Tourist"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="age"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="age"/>
+            <Datatype abbreviatedIRI="xsd:integer"/>
+        </DataSomeValuesFrom>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="date"/>
+        <Class IRI="Event"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="date"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="date"/>
+            <Datatype abbreviatedIRI="xsd:dateTime"/>
+        </DataSomeValuesFrom>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="pricePerNight"/>
+        <Class IRI="Accommodation"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="pricePerNight"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="pricePerNight"/>
+            <Datatype abbreviatedIRI="xsd:decimal"/>
+        </DataSomeValuesFrom>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="foaf:name"/>
+        <Class IRI="Person"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty abbreviatedIRI="foaf:name"/>
+        <DataSomeValuesFrom>
+            <DataProperty abbreviatedIRI="foaf:name"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="EventName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="age"/>
+        <Datatype abbreviatedIRI="xsd:integer"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="date"/>
+        <Datatype abbreviatedIRI="xsd:date"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="location"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
