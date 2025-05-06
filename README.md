@@ -107,6 +107,53 @@ WHERE {
 }
 ```
 
+## 🔧 Contraintes OWL Principales
+
+Cette section décrit les principales contraintes définies dans l'ontologie OWL du projet.
+
+---
+
+### 🎯 Types de Contraintes
+
+#### 📌 Cardinalité
+
+- **Destination** doit avoir **exactement une** `localisation`  
+  *(owl:qualifiedCardinality = 1)*
+
+- **Tourist** doit avoir **exactement un** `âge`  
+  *(owl:qualifiedCardinality = 1)*
+
+#### 🧭 Hiérarchie
+
+- **Destination** est une **sous-classe** de `Place`  
+  → Elle doit proposer **au moins une** `Activity`  
+  *(owl:someValuesFrom Activity)*
+
+- **Tourist** est une **sous-classe** de `Person`  
+  → Elle doit être **liée obligatoirement** à des `Activity` ou `Event`
+
+#### 🧾 Typage de Données
+
+- `EventName` et `activityName` sont typés comme des **chaînes de caractères**  
+  *(xsd:string)*
+
+- La `date` d’un événement est au format **xsd:date**
+
+#### 🚫 Exclusivité
+
+- Les classes **Tourist** et **Destination** sont **disjointes**  
+  → Un même individu **ne peut pas** appartenir aux deux classes  
+  *(owl:disjointWith)*
+
+#### 🧩 Sous-Classes Spécialisées
+
+- **Accommodation** comprend des **sous-classes exclusives** :  
+  `Hotel`, `Hostel`, `Camping`
+
+- **Transport** est divisé en :  
+  `Bus`, `Train`, `Plane`
+
+
 ## 📚 Règles SWRL Détaillées
 
 ### 1. Règle de Participation Automatique aux Activités
