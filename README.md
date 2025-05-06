@@ -106,3 +106,35 @@ WHERE {
   ?destination ex:offersActivity ?activity .
 }
 ```
+
+## 📚 Règles SWRL Détaillées
+
+### 1. Règle de Participation Automatique aux Activités
+**Logique Métier**  
+Si un touriste visite une destination offrant une activité, il y participe automatiquement.
+
+```swrl
+Tourist(?t) ∧ visits(?t, ?d) ∧ Destination(?d) ∧ offersActivity(?d, ?a) → attends(?t, ?a)
+```
+
+### 2. Règle de Lien Culture-Monument
+**Logique Métier**  
+Toute activité culturelle implique la visite d'un monument.
+
+```swrl
+CulturalActivity(?a) ∧ attends(?t, ?a) → visits(?t, ?m) ∧ Monument(?m)
+```
+### 3. Règle de Détection d'Hébergement Haut de Gamme
+**Logique Métier**  
+Un hébergement coûteux (>100€/nuit) est classifié comme Hôtel.
+
+```swrl
+Accommodation(?a) ∧ pricePerNight(?a, ?p) ∧ swrlb:greaterThan(?p, 100) → Hotel(?a)
+```
+### 4. Règle d'Identification d'Événement National
+**Logique Métier**  
+Un événement contenant "Nationale" dans son nom est une activité culturelle.
+
+```swrl
+Event(?e) ∧ EventName(?e, ?name) ∧ swrlb:contains(?name, "Nationale") → CulturalActivity(?e)
+```
